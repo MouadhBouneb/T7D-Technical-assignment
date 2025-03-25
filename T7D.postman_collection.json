@@ -1,0 +1,1306 @@
+{
+	"info": {
+		"_postman_id": "c16c1a18-4292-411f-8c9c-f1c6231a9d23",
+		"name": "T7D",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "25601215",
+		"_collection_link": "https://lively-crescent-998240.postman.co/workspace/khllaslii~dd2692a7-5ca6-4036-9832-bcaa0997144f/collection/25601215-c16c1a18-4292-411f-8c9c-f1c6231a9d23?action=share&source=collection_link&creator=25601215"
+	},
+	"item": [
+		{
+			"name": "auth",
+			"item": [
+				{
+					"name": "login",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"const responseJson = pm.response.json();\r",
+									"const token = responseJson.token;\r",
+									"pm.collectionVariables.set(\"token\", token);\r",
+									"console.log(\"JWT Token:\", token);"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\":\"admin@example.com\",\r\n    \"password\":\"admin123\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/auth/login",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"auth",
+								"login"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "success",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"email\":\"admin@example.com\",\r\n    \"password\":\"admin123\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/api/auth/login",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"auth",
+										"login"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "308"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"134-vP8yfJSrNfRdLiKefDTD96hMLUk\""
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 25 Mar 2025 00:37:55 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": \"success\",\n    \"token\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3ZTFmYWRkOGJjNDQyNzg1MjliYTc3NiIsImlhdCI6MTc0Mjg2MzA3NSwiZXhwIjoxNzQyODY2Njc1fQ.cQz5e5lWApk5ZX3XxolMejiZNKk0xyvMkEcu3oJuz-4\",\n    \"data\": {\n        \"_id\": \"67e1fadd8bc44278529ba776\",\n        \"name\": \"Super Admin\",\n        \"email\": \"admin@example.com\",\n        \"role\": \"admin\"\n    }\n}"
+						},
+						{
+							"name": "failed",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"email\":\"admin@example.com\",\r\n    \"password\":\"admin123c\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/api/auth/login",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"auth",
+										"login"
+									]
+								}
+							},
+							"status": "Unauthorized",
+							"code": 401,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "57"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"39-vQX532ScA3US88H3JWA4xR5gFGM\""
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 25 Mar 2025 00:52:09 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": \"fail\",\n    \"message\": \"Incorrect email or password\"\n}"
+						}
+					]
+				},
+				{
+					"name": "register",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\":\"mouadh2\",\r\n    \"email\":\"mouadh2@example.com\",\r\n    \"password\":\"mouadh123\",\r\n    \"passwordConfirm\":\"mouadh123\"\r\n\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/auth/register",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"auth",
+								"register"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Email already in use",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\":\"mouadh\",\r\n    \"email\":\"mouadh@example.com\",\r\n    \"password\":\"mouadh123\",\r\n    \"passwordConfirm\":\"mouadh123\"\r\n\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/api/auth/register",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"auth",
+										"register"
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "50"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"32-wl1IODZGQ05ysxA0mUgOJHvdBtk\""
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 25 Mar 2025 00:41:14 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": \"fail\",\n    \"message\": \"Email already in use\"\n}"
+						},
+						{
+							"name": "success",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\":\"mouadh2\",\r\n    \"email\":\"mouadh2@example.com\",\r\n    \"password\":\"mouadh123\",\r\n    \"passwordConfirm\":\"mouadh123\"\r\n\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/api/auth/register",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"auth",
+										"register"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "317"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"13d-Cdhe1MCH4CHaXVuRHkQePIj7+RM\""
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 25 Mar 2025 00:52:51 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": \"success\",\n    \"token\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3ZTFmZTYxNTdjNjFhNWU5YjU0MDI0NyIsImlhdCI6MTc0Mjg2Mzk3MSwiZXhwIjoxNzQyODY3NTcxfQ.zlLNvqAYH9anNvv6UDnGR65kRq9Hrjnyu3P-yGUUkT4\",\n    \"data\": {\n        \"name\": \"mouadh2\",\n        \"email\": \"mouadh2@example.com\",\n        \"role\": \"user\",\n        \"balance\": 0,\n        \"_id\": \"67e1fe6157c61a5e9b540247\"\n    }\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "voucher",
+			"item": [
+				{
+					"name": "get all",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/api/vouchers",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"vouchers"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "empty",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/api/vouchers",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"vouchers"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "84"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"54-eTeaoDT4q/qrvCOgc94Mn0Z2mSs\""
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 25 Mar 2025 00:57:38 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": \"success\",\n    \"data\": {\n        \"data\": [],\n        \"total\": 0,\n        \"page\": 1,\n        \"limit\": 10,\n        \"totalPages\": 0\n    }\n}"
+						},
+						{
+							"name": "success",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/api/vouchers",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"vouchers"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "258"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"102-cWtr0+AJ4NKyNLR865tD5ad49zg\""
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 25 Mar 2025 01:14:06 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": \"success\",\n    \"data\": {\n        \"data\": [\n            {\n                \"_id\": \"67e2025343094a9de81adb07\",\n                \"name\": \"fifa\",\n                \"code\": \"2CEZWCAH\",\n                \"value\": 15,\n                \"status\": \"active\",\n                \"expiryDate\": \"2025-10-10T00:00:00.000Z\",\n                \"createdAt\": \"2025-03-25T01:09:39.159Z\"\n            }\n        ],\n        \"total\": 1,\n        \"page\": 1,\n        \"limit\": 10,\n        \"totalPages\": 1\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "create",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\":\"fifa\",\r\n    \"value\":\"15\",\r\n    \"expiryDate\":\"2025-10-10\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/vouchers",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"vouchers"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "success",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\":\"fifa\",\r\n    \"value\":\"15\",\r\n    \"expiryDate\":\"2025-10-10\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/api/vouchers",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"vouchers"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "202"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"ca-Ld4Up/75NZ5H3HJb4h8o0j1Otiw\""
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 25 Mar 2025 01:28:41 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": \"success\",\n    \"data\": {\n        \"name\": \"fifa\",\n        \"code\": \"LCHUQG93\",\n        \"value\": 15,\n        \"status\": \"active\",\n        \"expiryDate\": \"2025-10-10T00:00:00.000Z\",\n        \"_id\": \"67e206c952a24a3dc4e2acb3\",\n        \"createdAt\": \"2025-03-25T01:28:41.537Z\"\n    }\n}"
+						},
+						{
+							"name": "create",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\":\"fifa\",\r\n    \"value\":\"15\",\r\n    \"expiryDate\":\"2025-10-10\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/api/vouchers",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"vouchers"
+									]
+								}
+							},
+							"status": "Forbidden",
+							"code": 403,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "79"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"4f-2LV2zS7I8vs9LfDFlG99b8ej85E\""
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 25 Mar 2025 01:41:13 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": \"fail\",\n    \"message\": \"You do not have permission to perform this action\"\n}"
+						},
+						{
+							"name": "permission denied",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\":\"fifa\",\r\n    \"value\":\"15\",\r\n    \"expiryDate\":\"2025-10-10\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/api/vouchers",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"vouchers"
+									]
+								}
+							},
+							"status": "Forbidden",
+							"code": 403,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "79"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"4f-2LV2zS7I8vs9LfDFlG99b8ej85E\""
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 25 Mar 2025 01:41:13 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": \"fail\",\n    \"message\": \"You do not have permission to perform this action\"\n}"
+						}
+					]
+				},
+				{
+					"name": "update",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"fifa\",\r\n    \"value\": 15,\r\n    \"status\": \"active\",\r\n    \"expiryDate\": \"2025-10-11\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/vouchers/67e2025343094a9de81adb07",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"vouchers",
+								"67e2025343094a9de81adb07"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "succcess",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"status\":\"active\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/api/vouchers/67e2025343094a9de81adb07",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"vouchers",
+										"67e2025343094a9de81adb07"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "214"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"d6-594GDyIoUYRC/Hlhv7g/opHOQ/0\""
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 25 Mar 2025 01:22:29 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": \"success\",\n    \"data\": {\n        \"voucher\": {\n            \"_id\": \"67e2025343094a9de81adb07\",\n            \"name\": \"fifa\",\n            \"code\": \"2CEZWCAH\",\n            \"value\": 15,\n            \"status\": \"active\",\n            \"expiryDate\": \"2025-10-10T00:00:00.000Z\",\n            \"createdAt\": \"2025-03-25T01:09:39.159Z\"\n        }\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "delete",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/api/vouchers/67e209110e6b5b54f3db1913",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"vouchers",
+								"67e209110e6b5b54f3db1913"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "success",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/api/vouchers/67e209110e6b5b54f3db1913",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"vouchers",
+										"67e209110e6b5b54f3db1913"
+									]
+								}
+							},
+							"status": "No Content",
+							"code": 204,
+							"_postman_previewlanguage": "plain",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 25 Mar 2025 01:38:31 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": null
+						},
+						{
+							"name": "not found",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/api/vouchers/67e209110e6b5b54f3db1913",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"vouchers",
+										"67e209110e6b5b54f3db1913"
+									]
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "47"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"2f-zXDo9dfGR2qgUZoEO9SC2EhHAmQ\""
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 25 Mar 2025 01:38:46 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": \"fail\",\n    \"message\": \"Voucher not found\"\n}"
+						}
+					]
+				},
+				{
+					"name": "purchase",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/vouchers/67e20682545663b1b0e0e09e/purchase",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"vouchers",
+								"67e20682545663b1b0e0e09e",
+								"purchase"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "purchased",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/api/vouchers/67e20682545663b1b0e0e09e/purchase",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"vouchers",
+										"67e20682545663b1b0e0e09e",
+										"purchase"
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "47"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"2f-CXbAaCQatDLBJw9MdehToxn4pOE\""
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 25 Mar 2025 03:39:40 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": \"fail\",\n    \"message\": \"Voucher purchased\"\n}"
+						},
+						{
+							"name": "success",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/api/vouchers/67e20682545663b1b0e0e09e/purchase",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"vouchers",
+										"67e20682545663b1b0e0e09e",
+										"purchase"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "245"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"f5-/FML6JBbki1CqYHpCMojN7Re2Fo\""
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 25 Mar 2025 03:40:33 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": \"success\",\n    \"message\": \"Voucher purchased successfully\",\n    \"data\": {\n        \"_id\": \"67e20682545663b1b0e0e09e\",\n        \"name\": \"fifa\",\n        \"code\": \"AHQDTC3O\",\n        \"value\": 15,\n        \"status\": \"active\",\n        \"expiryDate\": \"2025-10-10T00:00:00.000Z\",\n        \"createdAt\": \"2025-03-25T01:27:30.354Z\"\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "redeem",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/api/vouchers/67e20682545663b1b0e0e09e/redeem",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"vouchers",
+								"67e20682545663b1b0e0e09e",
+								"redeem"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "success",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/api/vouchers/67e20682545663b1b0e0e09e/redeem",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"vouchers",
+										"67e20682545663b1b0e0e09e",
+										"redeem"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "62"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"3e-wd8Kgidt2iEqoeC2yJaIn4ditZg\""
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 25 Mar 2025 03:42:20 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": \"success\",\n    \"message\": \"Voucher redeemed successfully\"\n}"
+						},
+						{
+							"name": "fail",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/api/vouchers/67e20682545663b1b0e0e09e/redeem",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"vouchers",
+										"67e20682545663b1b0e0e09e",
+										"redeem"
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "69"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"45-BZQg+r3Z94C/8D13W9HEaxLDRso\""
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 25 Mar 2025 03:42:36 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": \"fail\",\n    \"message\": \"Voucher is not available for redemption\"\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "transaction",
+			"item": [
+				{
+					"name": "history",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/api/transaction",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"transaction"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"auth": {
+		"type": "bearer",
+		"bearer": [
+			{
+				"key": "token",
+				"value": "{{token}}",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "token",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"key": "url",
+			"value": "http://localhost:5000",
+			"type": "string"
+		}
+	]
+}
